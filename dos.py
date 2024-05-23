@@ -23,7 +23,7 @@ def send_post_request():
     print(f'Status Code: {response.status_code}')
 
 def main():
-    num_threads = 10000  # Number of threads to use (adjust as necessary)
+    num_threads = 1000000  # Number of threads to use (adjust as necessary)
     with concurrent.futures.ThreadPoolExecutor(max_workers=num_threads) as executor:
         futures = [executor.submit(send_post_request) for _ in range(num_threads)]
         concurrent.futures.wait(futures)
